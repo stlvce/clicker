@@ -1,0 +1,39 @@
+{% load static %}
+
+<html lang="en">
+<head>
+    <title>Лучший кликер на планете</title>
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+    <script type="text/javascript" src="{% static 'js/index.js' %}"></script>
+</head>
+<body>
+    <main class="app"> 
+        <nav class="nav"> 
+            Привет, {{ user.username }} 
+            <a href="{% url 'logout' %}">Выйти</a> 
+        </nav> 
+
+        <div class="container"> 
+            <div id='coins'>{{core.coins}}</div>  
+            <button onclick="call_click()">Нажми меня</button>
+            <p>
+                Невероятная мощь клика: <span id="click_power">{{ core.click_power }}</span>   
+            </p>
+        </div> 
+
+        <aside class="boosts" id="boosts">   
+            <h3>Бусты</h3>   
+            <div class="boosts-holder" id="boosts-holder">   
+                {% for boost in boosts %}
+                    <!-- {{boost.id}} -->
+                    <button class="boost" id="boost_{{boost.id}}" onclick="buy_boost()">  
+                        <p>lvl: <span id="boost_level">{{boost.level}}</span></p>   
+                        <p>+<span id="boost_power">{{boost.power}}</span></p>   
+                        <p><span id="boost_price">{{boost.price}}</span></p>   
+                    </button>   
+                {% endfor %}   
+            </div>   
+        </aside>
+    </main> 
+</body>
+</html>
