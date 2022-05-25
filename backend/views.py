@@ -72,11 +72,15 @@ class BoostViewSet(viewsets.ModelViewSet):
         boosts = Boost.objects.filter(core=core) 
         return boosts
 
-# changed
 @api_view(['GET'])
 @login_required
-def buy_boost(request):
-    core = Core.objects.get(user=request.user)
-    core.call_boost()
-    core.save()
-    return Response({ 'core': CoreSerializer(core).data})
+def buy_boost(request, id):
+    core = Core.objects.get(user=request.user)   
+    boost = Boost.objects.get(id=id)
+    if core.coins > 0:
+        core.click_power += boost.power
+        core.coins -= boost.price
+        boost.delete()
+        core.save()
+        return Response({'coins': core.coins})
+    return Response("Not enough money", status=400)

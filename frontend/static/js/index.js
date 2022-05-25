@@ -46,8 +46,8 @@ function add_boost(parent, boost) {
 }
 
 
-function buy_boost() {
-    fetch('buy_boost', {
+function buy_boost(boost_id) {
+    fetch('buy_boost/' + boost_id, {
         method: 'GET'
     }).then(response => {
         if (response.ok) {
@@ -55,7 +55,6 @@ function buy_boost() {
         }
         return Promise.reject(response)
     }).then(data => {
-        document.getElementById('coins').innerText = data.core.coins
-        console.log('Soso')
+        document.getElementById('coins').innerText = data.coins
     }).catch(error => console.log(error))
 } 

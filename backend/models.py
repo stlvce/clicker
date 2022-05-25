@@ -15,11 +15,11 @@ class Core(models.Model):
         return False 
 
     # changed
-    def call_boost(self):
-        boosto = Boost.objects.get(id=5)
-        self.coins = self.coins - boosto.price
-        self.click_power += boosto.power
-        return True
+    # def call_boost(self):
+    #     boosto = Boost.objects.get(id=5)
+    #     self.coins = self.coins - boosto.price
+    #     self.click_power += boosto.power
+    #     return True
     # h
 
     def check_level_price(self): 

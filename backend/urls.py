@@ -13,7 +13,5 @@ urlpatterns = [
     path('logout/',views.User_logout.as_view(), name='logout'),
     path('call_click/', views.call_click),
     path('boosts/', boosts, name='boosts'),
-
-    # changed
-    path('buy_boost/', views.buy_boost), 
+    path('buy_boost/<int:id>', views.buy_boost, name='buy_boost'), 
 ]
