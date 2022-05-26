@@ -46,15 +46,63 @@ function add_boost(parent, boost) {
 }
 
 
+// function buy_boost(boost_id) {
+//     fetch('buy_boost/' + boost_id, {
+//         method: 'GET'
+//     }).then(response => {
+//         if (response.ok) {
+//             return response.json()
+//         }
+//         return Promise.reject(response)
+//     }).then(data => {
+//         document.getElementById('coins').innerText = data.coins
+//     }).catch(error => console.log(error))
+// } 
+
+function getCookie(name) { 
+    let cookieValue = null; 
+    if (document.cookie && document.cookie !== '') { 
+        const cookies = document.cookie.split(';'); 
+        for (let i = 0; i < cookies.length; i++) { 
+            const cookie = cookies[i].trim(); 
+            if (cookie.substring(0, name.length + 1) === (name + '=')) { 
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1)); 
+                break; 
+            } 
+        } 
+    } 
+    return cookieValue; 
+}
+
 function buy_boost(boost_id) {
-    fetch('buy_boost/' + boost_id, {
-        method: 'GET'
-    }).then(response => {
-        if (response.ok) {
-            return response.json()
+    const csrftoken = getCookie('csrftoken') 
+
+    fetch(`boost/${boost_id}/`, {
+        method: 'PUT',
+        headers: {
+            "X-CSRFToken": csrftoken, 
+            'Content-Type': 'application/json'
         }
-        return Promise.reject(response)
-    }).then(data => {
-        document.getElementById('coins').innerText = data.coins
-    }).catch(error => console.log(error))
-} 
+    }).then(response => {
+        if (response.ok) return response.json()
+        else return Promise.reject(response)
+    }).then(response => {
+        if (response.error) return
+        const old_boost_stats = response.old_boost_stats
+        const new_boost_stats = response.new_boost_stats
+       
+        const coinsElement = document.getElementById('coins')
+        coinsElement.innerText = Number(coinsElement.innerText) - old_boost_stats.price
+        const powerElement = document.getElementById('click_power')
+        powerElement.innerText = Number(powerElement.innerText) + old_boost_stats.power
+
+        update_boost(new_boost_stats) 
+    }).catch(err => console.log(err))
+}
+
+function update_boost(boost) {
+    const boost_node = document.getElementById(`boost_${boost.id}`)
+    boost_node.querySelector('#boost_level').innerText = boost.level
+    boost_node.querySelector('#boost_power').innerText = boost.power
+    boost_node.querySelector('#boost_price').innerText = boost.price
+}

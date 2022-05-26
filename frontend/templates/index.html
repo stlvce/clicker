@@ -7,14 +7,10 @@
     <script type="text/javascript" src="{% static 'js/index.js' %}"></script>
 </head>
 <body>
+    <img src="{% static 'img/i.png' %}" alt="cover" width="100%" height="100%"> 
     <main class="app"> 
-        <nav class="nav"> 
-            Привет, {{ user.username }} 
-            <a href="{% url 'logout' %}">Выйти</a> 
-        </nav> 
-
         <div class="container"> 
-            <div id='coins'>{{core.coins}}</div>  
+            <div id='coins'>{{ core.coins }}</div>  
             <button onclick="call_click()">Нажми меня</button>
             <p>
                 Невероятная мощь клика: <span id="click_power">{{ core.click_power }}</span>   
@@ -25,14 +21,20 @@
             <h3>Бусты</h3>   
             <div class="boosts-holder" id="boosts-holder">   
                 {% for boost in boosts %}
-                    <button class="boost" id="boost_{{boost.id}}" onclick="buy_boost({{boost.id}}), window.location.reload()">  
-                        <p>lvl: <span id="boost_level">{{boost.level}}</span></p>   
-                        <p>+<span id="boost_power">{{boost.power}}</span></p>   
-                        <p><span id="boost_price">{{boost.price}}</span></p>   
+                    {% comment %} , window.location.reload() {% endcomment %}
+                    <button class="boost" id="boost_{{ boost.id }}" onclick="buy_boost({{ boost.id }})">  
+                        <p>lvl: <span id="boost_level">{{ boost.level }}</span></p>   
+                        <p>+<span id="boost_power">{{ boost.power }}</span></p>   
+                        <p><span id="boost_price">{{ boost.price }}</span></p>  
                     </button>   
                 {% endfor %}   
             </div>   
         </aside>
+        
+        <nav class="nav"> 
+            Привет, {{ user.username }} 
+            <a href="{% url 'logout' %}">Выйти</a> 
+        </nav>
     </main> 
 </body>
 </html>

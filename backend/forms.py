@@ -9,13 +9,13 @@ class UserForm(forms.ModelForm):
     username = forms.CharField(
         max_length=20,
         label='Имя пользователя',
-        widget=forms.TextInput(attrs={'placeholder': 'Вводи'}),
+        widget=forms.TextInput(attrs={'placeholder': 'Имя пользователя'}),
     )
     password = forms.CharField(
         min_length=3,
         max_length=20,
         label='Пароль',
-        widget=forms.PasswordInput(attrs={'placeholder': 'Вводи пароль'}),
+        widget=forms.PasswordInput(attrs={'placeholder': 'Пароль'}),
     )
     password_confirm = forms.CharField(
         min_length=3,
