@@ -73,9 +73,10 @@ class BoostViewSet(viewsets.ModelViewSet):
         return boosts
         
     def partial_update(self, request, pk):
+        coins = request.data['coins']
         boost = self.queryset.get(pk=pk)
 
-        is_levelup = boost.levelup()
+        is_levelup = boost.levelup(coins)
         if not is_levelup:
             return Response({ "error": "Не хватает денег" })
 
@@ -86,15 +87,24 @@ class BoostViewSet(viewsets.ModelViewSet):
             "new_boost_stats": self.serializer_class(new_boost_stats).data,
     })
 
-# @api_view(['GET'])
-# @login_required
-# def buy_boost(request, id):
-#     core = Core.objects.get(user=request.user)   
-#     boost = Boost.objects.get(id=id)
-#     if core.coins > 0:
-#         core.click_power += boost.power
-#         core.coins -= boost.price
-#         boost.delete()
-#         core.save()
-#         return Response({'coins': core.coins})
-#     return Response("Not enough money", status=400)
+@api_view(['POST']) 
+def update_coins(request): 
+    coins = request.data['current_coins'] 
+    core = Core.objects.get(user=request.user)
+   
+    is_levelup, boost_type = core.set_coins(coins) 
+   
+    if is_levelup: 
+        Boost.objects.create(core=core, price=core.coins, power=core.level*2, type=boost_type) 
+    core.save()
+
+    return Response({
+        'core': CoreSerializer(core).data, 
+        'is_levelup': is_levelup,
+    })
+
+@api_view(['GET'])
+def get_core(request):
+    core = Core.objects.get(user=request.user)
+    return Response({'core': CoreSerializer(core).data})
+    

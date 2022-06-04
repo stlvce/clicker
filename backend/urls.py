@@ -16,7 +16,8 @@ urlpatterns = [
     path('login/',views.Login.as_view(), name='login'),
     path('logout/',views.User_logout.as_view(), name='logout'),
     path('call_click/', views.call_click),
-    path('boosts/', boosts, name='boosts'),
-    # path('buy_boost/<int:id>', views.buy_boost, name='buy_boost'), 
+    path('boosts/', boosts, name='boosts'), 
     path('boost/<int:pk>/', lonely_boost, name='boost'),
+    path('update_coins/', views.update_coins),
+    path('core/', views.get_core),
 ]
