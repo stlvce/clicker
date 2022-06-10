@@ -24,6 +24,47 @@ main {
     cursor: pointer;
 }
 
+.container {
+    text-align: center;
+    padding-top: 15em;
+}
+
+.info {
+    margin-top: 10px;
+}
+
+.info p {
+    margin: 0;
+}
+
+#button-click {
+    width: 100px;
+    height: 100px;
+}
+
+#coins {
+    margin-top: 5px;
+
+    color: black;
+    background:rgb(142, 99, 56);
+    font-weight: bold;
+    border: 2px solid;
+    border-radius: 10px;
+}
+
+#click_power, #auto_click_power {
+    font-style: italic;
+}
+
+#click_power {
+    color: rgb(0, 255, 42);
+}
+
+#auto_click_power {
+    color: rgb(143, 161, 40);
+}
+
+/* Бусты */
 aside {
     padding-left: 40px;
     padding-top: 0;
@@ -37,27 +78,32 @@ h3 {
 .boost {
     width: 100px;
     border-radius: 10px;
-    margin: 0 0 5px 5px;
+    margin: 0 5px 5px 0;
     background: rgb(50, 11, 87);
     font-size: 14px;
 }
 
+.boost_1 {
+    background-color: orange;
+}
+
+/* Выход */
 nav {
     font-size: 16px;
     text-align: center;
 }
 
 nav a {
-    text-decoration: none;
+    position: relative;
+    top: 5px;
     color: rgb(146, 146, 214);
 }
 
 nav a:hover {
-    color: red;
+    border-bottom: 1px solid;
 }
 
-.boost_1 {
-    background-color: red;
+#door {
+    width: 20px;
+    height: 20px;
 }
-
-

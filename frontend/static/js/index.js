@@ -42,10 +42,10 @@ function GameSession() {
 let Game = new GameSession() 
 
 function call_click() {
-    const kakashiNode = document.getElementById('kakashi')
+    const kakashiNode = document.getElementById('button-click')
     click_animation(kakashiNode, 50)
     Game.add_coins(Game.click_power)
-    fetch('call_click', {
+    fetch('call_click/', {
         method: 'GET'
     }).then(response => {
         if (response.ok) {

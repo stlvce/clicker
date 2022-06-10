@@ -9,18 +9,21 @@
 <body>
     <img src="{% static 'img/i.png' %}" alt="cover" width="100%" height="100%"> 
     <main class="app"> 
-        <div class="container"> 
-            <div id='coins'>{{ core.coins }}</div>  
-            <button onclick="call_click()" id="kakashi">Нажми меня</button>
-            <p>Невероятная мощь клика: <span id="click_power">{{ core.click_power }}</span></p>
-            <p>Самостоятельная дружина кликеров. Чел: <span id="auto_click_power">{{ core.auto_click_power }}</span></p>
+        <div class="container">  
+            <img onclick="call_click()" id="button-click" src="{% static 'img/asura.png' %}" alt="cover">
+            <div id='coins'>{{ core.coins }}</div>
+            <div class="info">
+                <p>Мощь клика: <span id="click_power">{{ core.click_power }}</span></p>
+                <p>Мощь автоматического клика: <span id="auto_click_power">{{ core.auto_click_power }}</span></p>
+            </div> 
+
         </div> 
 
         <aside class="boosts" id="boosts">   
             <h3>Бусты</h3>   
             <div class="boosts-holder" id="boosts-holder">   
                 {% for boost in boosts %}
-                    <button class="boost_{{boost.type}}" id="boost_{{boost.id}}" onclick="buy_boost({{ boost.id }})">  
+                    <button class="boost boost_{{boost.type}}" id="boost_{{boost.id}}" onclick="buy_boost({{ boost.id }})">  
                         <p>lvl: <span id="boost_level">{{ boost.level }}</span></p>   
                         <p>+<span id="boost_power">{{ boost.power }}</span></p>   
                         <p><span id="boost_price">{{ boost.price }}</span></p>  
@@ -31,7 +34,7 @@
         
         <nav class="nav"> 
             Привет, {{ user.username }} 
-            <a href="{% url 'logout' %}">Выйти</a> 
+            <a href="{% url 'logout' %}"><img id="door" src="{% static 'img/door-open.svg' %}" alt="exit" title="Выход"></a> 
         </nav>
     </main> 
 </body>

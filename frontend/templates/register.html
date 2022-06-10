@@ -1,17 +1,23 @@
+{% load static %}
+
 <html lang="en"> 
 <head> 
     <title>Регистрация в лучшем кликере</title> 
+    <link rel="stylesheet" href="{% static 'css/register.css' %}">
 </head> 
 <body>
-    <h1>Регистрация</h1>
-    {% if form.errors %} 
-        <p>{{form.errors}}</p> 
-    {% endif %} 
-    <form action="{% url 'register' %}" method='POST'> 
-        {% csrf_token %} 
-        {{ form.as_p }} 
-        <input type="submit"> 
-    </form> 
-    <a href="{% url 'login' %}">Зарегистрирован?</a>
+    <img src="{% static 'img/i.png' %}" alt="cover" width="100%" height="100%"> 
+    <main>
+        <h1>Регистрация</h1>
+        {% if form.errors %} 
+            <p>{{form.errors}}</p> 
+        {% endif %} 
+        <form action="{% url 'register' %}" method='POST'> 
+            {% csrf_token %} 
+            {{ form.as_p }} 
+            <input type="submit" class="entry"> 
+        </form> 
+        <a href="{% url 'login' %}">Зарегистрирован?</a>
+    </main>
 </body> 
 </html>

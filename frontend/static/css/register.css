@@ -1,56 +1,42 @@
-body {
-    background: rgb(11, 8, 40);
+* {
     margin: 0;
     padding: 0;
 }
 
-form, h1, a {
+main, img {
     position: absolute;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: white;
+}
+
+main {
+    left: 40%;
+    top: 30%;   
 }
 
 h1 {
-    color: white;
-    left: 41%;
-    top: 30%;
     font-size: 40px;
-}
-
-a {
-    text-decoration: none;
-    left: 40%;
-    top: 51%;
-    color: red;
-    font-style: italic;
-}
-
-form {
-    left: 40%;
-    top: 40%;
+    margin-bottom: 10px;
+    padding-left: 40px;
 }
 
 form p {
-    color: white;
-    padding-top: 10px;
-    margin: 0;
-}
-
-input {
-    width: 260px;
-    height: 30px;
+    padding: 5px 0;
     font-size: 17px;
 }
 
-.username, .password {
-    margin: 10px 0;
-    
+form p input {
+    font-size: 14px;
+    font-style: italic;
+    margin-left: 5px;
 }
 
 .entry {
-    margin-top: 15px;
-    margin-left: 30px;
     width: 200px;
+    height: 30px;
     border-radius: 20px;
+    margin-left: 70px;
+    margin-top: 25px;
 
     border-color: #3498db;
     color: #fff;
@@ -64,4 +50,12 @@ input {
     cursor: pointer;
     box-shadow: 0 0 10px 0 #3498db inset, 0 0 10px 2px #968cf3;
     color: black;
+}
+
+a {
+    position: relative;
+    bottom: 55px;
+    text-decoration: none;
+    color: red;
+    font-style: italic;
 }
