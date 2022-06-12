@@ -90,7 +90,11 @@ h3 {
 /* Выход */
 nav {
     font-size: 16px;
-    text-align: center;
+    text-align: right;
+}
+
+.username {
+    color: rgb(114, 212, 72);
 }
 
 nav a {
@@ -106,4 +110,47 @@ nav a:hover {
 #door {
     width: 20px;
     height: 20px;
+}
+
+.achievements {
+    margin-top: 20px; 
+    padding-right: 30px; 
+}
+
+.achievements h3 {
+    margin: 0;
+    margin-bottom: 10px;
+}
+
+.achievements h4 {
+    float: left;
+    color: orange;
+    font-style: italic;
+    margin: 0;
+    margin-bottom: 10px;
+}
+
+hr {
+    border: none;
+    border-top: 5px solid green;
+}
+
+.p-ach {
+    float: left;
+    margin: 0;
+    margin-bottom: 5px;
+
+    color: white;
+}
+
+#ach {
+    color: green;
+}
+
+.ach-cp h4 {
+    margin-top: 20px;
+}
+
+#click_p {
+    color: red;
 }

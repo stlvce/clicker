@@ -33,8 +33,133 @@
         </aside>
         
         <nav class="nav"> 
-            Привет, {{ user.username }} 
+            Привет, <span class="username">{{ user.username }}</span>
             <a href="{% url 'logout' %}"><img id="door" src="{% static 'img/door-open.svg' %}" alt="exit" title="Выход"></a> 
+            
+            <div class="achievements">
+                <h3>Достижения</h3>
+                <hr>
+                <h4>Количество монет</h4>
+                <p class="p-ach">1000 монет
+                    {% if core.coins >= 1000 %}
+                        <span id="ach">✔</span>
+                    {% endif %}
+                </p>
+                <p class="p-ach">10 000 монет
+                    {% if core.coins >= 10000 %}
+                        <span id="ach">✔</span>
+                    {% endif %}
+                </p>
+                <p class="p-ach">100 000 монет
+                    {% if core.coins >= 100000 %}
+                        <span id="ach">✔</span>
+                    {% endif %}
+                </p>
+                <p class="p-ach">1 000 000 монет
+                    {% if core.coins >= 1000000 %}
+                        <span id="ach">✔</span>
+                    {% endif %}
+                </p>
+                <p class="p-ach">1 500 000 монет
+                    {% if core.coins >= 1500000 %}
+                        <span id="ach">✔</span>
+                    {% endif %}
+                </p>
+                <p class="p-ach">2 000 000 монет
+                    {% if core.coins >= 2000000 %}
+                        <span id="ach">✔</span>
+                    {% endif %}
+                </p>
+                <p class="p-ach">3 000 000 монет
+                    {% if core.coins >= 3000000 %}
+                        <span id="ach">✔</span>
+                    {% endif %}
+                </p>
+                <p class="p-ach">4 000 000 монет
+                    {% if core.coins >= 4000000 %}
+                        <span id="ach">✔</span>
+                    {% endif %}
+                </p>
+                <p class="p-ach">5 000 000 монет
+                    {% if core.coins >= 5000000 %}
+                        <span id="ach">✔</span>
+                    {% endif %}
+                </p>
+                <p class="p-ach">10 000 000 монет
+                    {% if core.coins >= 10000000 %}
+                        <span id="ach">✔</span>
+                    {% endif %}
+                </p>
+                <p class="p-ach">50 000 000 монет
+                    {% if core.coins >= 50000000 %}
+                        <span id="ach">✔</span>
+                    {% endif %}
+                </p>
+                <p class="p-ach">100 000 000 монет
+                    {% if core.coins >= 100000000 %}
+                        <span id="ach">✔</span>
+                    {% endif %}
+                </p>
+                <p class="p-ach">500 000 000 монет
+                    {% if core.coins >= 500000000 %}
+                        <span id="ach">✔</span>
+                    {% endif %}
+                </p>
+                <p class="p-ach">1 000 000 000 монет
+                    {% if core.coins >= 1000000000 %}
+                        <span id="ach">✔</span>
+                    {% endif %}
+                </p>
+
+                <div class="ach-cp">
+                    <h4>Сила клика</h4>
+                    <p class="p-ach"><span id="click_p">100</span> силы клика
+                        {% if core.click_power >= 100 %}
+                            <span id="ach">✔</span>
+                        {% endif %}
+                    </p>
+                    <p class="p-ach"><span id="click_p">200</span> силы клика
+                        {% if core.click_power >= 200 %}
+                            <span id="ach">✔</span>
+                        {% endif %}
+                    </p>
+                    <p class="p-ach"><span id="click_p">500</span> силы клика
+                        {% if core.click_power >= 500 %}
+                            <span id="ach">✔</span>
+                        {% endif %}
+                    </p>
+                    <p class="p-ach"><span id="click_p">1000</span> силы клика
+                        {% if core.click_power >= 1000 %}
+                            <span id="ach">✔</span>
+                        {% endif %}
+                    </p>
+                    <p class="p-ach"><span id="click_p">5000</span> силы клика
+                        {% if core.click_power >= 5000 %}
+                            <span id="ach">✔</span>
+                        {% endif %}
+                    </p>
+                    <p class="p-ach"><span id="click_p">10 000</span> силы клика
+                        {% if core.click_power >= 10000 %}
+                            <span id="ach">✔</span>
+                        {% endif %}
+                    </p>
+                    <p class="p-ach"><span id="click_p">50 000</span> силы клика
+                        {% if core.click_power >= 50000 %}
+                            <span id="ach">✔</span>
+                        {% endif %}
+                    </p>
+                    <p class="p-ach"><span id="click_p">100 000</span> силы клика
+                        {% if core.click_power >= 100000 %}
+                            <span id="ach">✔</span>
+                        {% endif %}
+                    </p>
+                    <p class="p-ach"><span id="click_p">1 000 000</span> силы клика
+                        {% if core.click_power >= 1000000 %}
+                            <span id="ach">✔</span>
+                        {% endif %}
+                    </p>
+                </div>
+            </div>
         </nav>
     </main> 
 </body>
